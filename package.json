@@ -1,0 +1,14 @@
+{
+  "name": "pSquaredSRS",
+  "version": "0.0.1",
+  "description": "SRS Flashcard platform built on a MEAN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.10.4"
+  }
+}
