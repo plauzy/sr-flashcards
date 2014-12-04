@@ -1,13 +1,8 @@
 angular.module('myApp.decks', [])
-.controller('DecksController', function($scope, $http){
+.controller('DecksController', function($scope, $http, Decks){
 
-   $scope.decklist = $http({
-      method: 'GET',
-      url: '/api/decks'
-    })
-    .then(function(resp) {
-      console.log(resp.data);
-      return resp.data
-    });
+  $scope.decklist = Decks.getAllDecks().$$state;
+  // console.log(Decks.getAllDecks());
+  // console.log(Decks.getAllDecks().$$state);
 
 });

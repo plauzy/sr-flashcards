@@ -3,20 +3,19 @@ var db = require('../db'),
 
 module.exports = {
   signin: function (req, res, next) {
-    var username = req.body.username,
+    var username = req.body.email,
         password = req.body.password;
-
+    // console.log("WHAT THE FUCK")
     db.User.find({ where: {username: username, password : password } })
       .success(function(foundUser) {
         if (foundUser) {
-          var token = jwt.encode(user, 'secret');
+          var token = jwt.encode(foundUser, 'secret');
           res.json({token: token});
         } else {
+          console.log("NO USER FOUND")
           return next(new Error('NO USER FOUND'));
         }
     });
-
-
 
     // var findUser = Q.nbind(User.findOne, User);
     // findUser({username: username})
@@ -41,11 +40,8 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    var username  = req.body.username,
-        password  = req.body.password;
-
     db.User.create({
-      username: req.body.username,
+      username: req.body.email,
       password: req.body.password
     }).complete(function(err, results){
       res.sendStatus(201);

@@ -1,13 +1,13 @@
 angular.module('myApp.registration', [])
 
-.controller('RegistrationController', function ($rootScope, $scope, $window, $location, Auth) {
+.controller('RegistrationController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
-  $rootScope.loggedIn = function() {
+  $scope.loggedIn = function() {
     return Auth.isAuth();
   };
 
-  $rootScope.logout = function() {
+  $scope.logout = function() {
     Auth.signout();
   };
 

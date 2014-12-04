@@ -11,7 +11,7 @@ module.exports = function (app) {
 
   app.route('/')
     .get(deckController.allDecks);
-    // .post(deckController.updateUserDecks);
+    // .post(deckController.updateDecks);
 
 
 };
