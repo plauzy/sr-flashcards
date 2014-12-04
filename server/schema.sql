@@ -12,7 +12,7 @@ CREATE TABLE cards (
   id int NOT NULL AUTO_INCREMENT,
   question varchar(200) NOT NULL,
   answer varchar(200),
-  deck_id int NOT NULL
+  deck_id int NOT NULL,
   PRIMARY KEY (ID)
 );
 

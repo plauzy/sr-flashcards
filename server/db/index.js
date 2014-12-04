@@ -1,9 +1,5 @@
 var Sequelize = require('sequelize');
-var orm = new Sequelize({
-    database: "flashcards",
-    username: "root",
-    password: ""
-  });
+var orm = new Sequelize("flashcards", "root", "");
 
 var Deck = orm.define('Deck', {
   name: Sequelize.STRING
@@ -19,7 +15,7 @@ var User_cards = orm.define('User_cards', {
   user_id: Sequelize.INTEGER,
   card_id: Sequelize.INTEGER,
   display_at: Sequelize.DATE,
-  times_viewed: Sequelize.INTEGER,
+  times_viewed: {type: Sequelize.INTEGER, defaultValue:0},
   last_time_to_answer: Sequelize.INTEGER,
   avg_time_to_answer: Sequelize.INTEGER
 });

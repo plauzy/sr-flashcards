@@ -1,0 +1,24 @@
+
+
+<section>
+  <form name="loginForm" novalidate>
+
+  <h1>Welcome</h1>
+  <p>Log-in to access site features.</p>
+
+  <input type="email" name="email" placeholder="Email" autofocus
+      ng-model="user.email"  ng-required="true">
+      <p class="alert alert-danger" role="alert" ng-show="loginForm.email.$invalid && loginForm.email.$touched">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Please use a valid Email
+      </p>
+  <input type="password" name="password" placeholder="Password"
+      ng-model="user.password" ng-required="true">
+       <p class="alert alert-danger" role="alert" ng-show="loginForm.password.$invalid && loginForm.password.$touched">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Please use a valid Password
+      </p>
+  <button type="submit" class="btn">Login</button>
+    <p>or <a href="#/register">register</a></p>
+  </form>
+</section>

@@ -1,0 +1,22 @@
+<section>
+  <form name="registrationForm" novalidate>
+
+  <h1>Welcome</h1>
+  <p>Register to access site features.</p>
+
+  <input type="email" name="email" placeholder="Email" autofocus
+      ng-model="user.email"  ng-required="true">
+      <p class="alert alert-danger" role="alert" ng-show="registrationForm.email.$invalid && registrationForm.email.$touched">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Please use a valid Email
+      </p>
+  <input type="password" name="password" placeholder="Password"
+      ng-model="user.password" ng-required="true">
+       <p class="alert alert-danger" role="alert" ng-show="registrationForm.password.$invalid && registrationForm.password.$touched">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        Please use a valid Password
+      </p>
+  <button type="submit" class="btn">Login</button>
+    <p>Already have an account? <a href="#/login">login</a></p>
+  </form>
+</section>
