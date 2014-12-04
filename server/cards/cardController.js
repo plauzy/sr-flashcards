@@ -5,6 +5,7 @@ module.exports = {
   allCards: function (req, res, next) {
     db.Card.findAll()
       .complete(function(err, results){
+        console.log(results);
         res.json(results);
       });
   },

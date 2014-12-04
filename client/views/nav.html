@@ -1,10 +1,11 @@
-<div>
+<div ng-controller = "RegistrationController">
   <ul class="nav nav-tabs">
     <li role="presentation" ><a ng-href="#/">Home</a></li>
     <li role="presentation" ><a ng-href="#/decks">Decks</a></li>
     <li role="presentation" ><a ng-href="#/reviews">Reviews</a></li>
-    <li role="presentation" ><a ng-href="#/login">Login</a></li>
-    <li role="presentation" ><a ng-href="#/register">Register</a></li>
+    <li ng-if="!loggedIn()" role="presentation" ><a ng-href="#/login">Login</a></li>
+    <li ng-if="!loggedIn()" role="presentation" ><a ng-href="#/register">Register</a></li>
+    <li ng-if="loggedIn()" role="presentation" ><a ng-click="logout()">Log Out</a></li>
   </ul>
 </div>
 

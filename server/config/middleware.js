@@ -6,8 +6,10 @@ module.exports = function (app, express) {
   // Express 4 allows us to use multiple routers with their own configurations
   var userRouter = express.Router();
   var cardRouter = express.Router();
+  var deckRouter = express.Router();
 
   app.use(morgan('dev'));
+  app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));
 
@@ -20,7 +22,10 @@ module.exports = function (app, express) {
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
+  app.use('/api/decks', deckRouter);
+
   // inject our routers into their respective route files
   require('../users/userRoutes.js')(userRouter);
   require('../cards/cardRoutes.js')(cardRouter);
+  require('../decks/deckRoutes.js')(deckRouter);
 };

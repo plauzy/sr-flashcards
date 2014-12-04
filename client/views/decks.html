@@ -1,6 +1,8 @@
 <div>
-  <input type="text" mg-model="search" placeholder="search">
+  <input type="text" ng-model="search" placeholder="search">
   <ul>
-    <li ng-repeat="deck in decklist | filter:search">{{deck}}</li>
+    {{decklist}}
+    <!-- <li ng-repeat="deck in decklist | filter:search">{{deck[0].name}}</li> -->
   </ul>
 </div>
+
