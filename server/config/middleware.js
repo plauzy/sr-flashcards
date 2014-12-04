@@ -13,6 +13,7 @@ module.exports = function (app, express) {
   app.use(express.static(__dirname + '/../../client'));
 
 
+
   app.use('/api/users', userRouter); // use user router for all user request
 
   // authentication middleware used to decode token and made available on the request
