@@ -10,8 +10,9 @@ module.exports = function (app) {
   // app.param('code', markerController.findUrl);
 
   app.route('/')
-    .get(cardController.allCards)
-    .post(cardController.updateUserCards);
+    .get(cardController.allCards);
 
+  app.route('/:id/users/:id')
+    .post(cardController.updateUserCards);
 
 };

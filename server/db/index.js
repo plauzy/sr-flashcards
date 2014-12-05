@@ -15,6 +15,7 @@ var User_cards = orm.define('User_cards', {
   user_id: Sequelize.INTEGER,
   card_id: Sequelize.INTEGER,
   display_at: Sequelize.DATE,
+  // interval: {type: Sequelize.INTEGER, defaultValue:???}
   times_viewed: {type: Sequelize.INTEGER, defaultValue:0},
   last_time_to_answer: Sequelize.INTEGER,
   avg_time_to_answer: Sequelize.INTEGER
@@ -26,10 +27,10 @@ var User = orm.define('User', {
 });
 
 
-Deck.hasMany(Card);
-Card.belongsTo(Deck);
-User.hasMany(Card, { through: User_cards });
-Card.hasMany(User, { through: User_cards });
+// Deck.hasMany(Card);
+// Card.belongsTo(Deck);
+// User.hasMany(Card, { through: User_cards });
+// Card.hasMany(User, { through: User_cards });
 
 
 
@@ -38,6 +39,8 @@ Card.sync();
 User_cards.sync();
 User.sync();
 
+
+exports.orm = orm;
 exports.Deck = Deck;
 exports.Card = Card;
 exports.User_cards = User_cards;

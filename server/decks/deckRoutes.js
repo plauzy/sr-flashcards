@@ -9,9 +9,11 @@ module.exports = function (app) {
   // req.navLink before it reaches line 16.
   // app.param('code', markerController.findUrl);
 
+  app.route('/:id')
+    .get(deckController.cardsInDeck);
+
   app.route('/')
     .get(deckController.allDecks);
     // .post(deckController.updateDecks);
-
 
 };

@@ -1,8 +1,10 @@
 <div>
-  <div>
+
     <h1>Reviews</h1>
-  </div>
-  <div ng-repeat="" ng-hide="">
-  </div>
+    <pre>{{reviewlist}}</pre>
+  <ul>
+    <li ng-repeat="review in reviewlist.value" >{{review.question}}</li>
+  </ul>
 </div>
 
+{{reviewCount.value}}

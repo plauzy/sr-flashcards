@@ -5,12 +5,13 @@ module.exports = {
   signin: function (req, res, next) {
     var username = req.body.email,
         password = req.body.password;
-    // console.log("WHAT THE FUCK")
+    // console.log("WHERE AM I")
     db.User.find({ where: {username: username, password : password } })
       .success(function(foundUser) {
         if (foundUser) {
+          var user_id = foundUser.dataValues.id;
           var token = jwt.encode(foundUser, 'secret');
-          res.json({token: token});
+          res.json({token: token, user_id : user_id});
         } else {
           console.log("NO USER FOUND")
           return next(new Error('NO USER FOUND'));
@@ -44,6 +45,11 @@ module.exports = {
       username: req.body.email,
       password: req.body.password
     }).complete(function(err, results){
+      console.log(results)
+      var user_id = results.dataValues.id;
+          var token = jwt.encode(foundUser, 'secret');
+          res.json({token: token, user_id : user_id});
+
       res.sendStatus(201);
     });
 

@@ -11,8 +11,59 @@ angular.module('myApp.services', [])
     });
   };
 
+    var getAllDeckCards = function(id) {
+    return $http({
+      method: 'GET',
+      url: '/api/decks/' + id
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+   var getReviews = function(userid) {
+    // console.log('userid:', userid);
+    var url = '/api/users/' + userid + '/reviews';
+    console.log("url: ", url);
+    return $http({
+      method: 'GET',
+      url: url
+    })
+    .then(function(resp) {
+      // console.log("inside: ", resp.data);
+      return resp.data;
+    });
+  };
+
+   var reviewCount = function(userid) {
+    var url = '/api/users/' + userid + '/reviews';
+    return $http({
+      method: 'GET',
+      url: url
+    })
+    .then(function(resp) {
+      // console.log(resp.data.length);
+      return resp.data.length;
+    });
+  };
+
+  var postCardToReviews = function(id, user) {
+    var url = '/api/cards/' + id + '/users/' + user;
+    return $http({
+      method: 'POST',
+      url: url
+    })
+    .then(function(resp) {
+      // console.log(resp.data);
+      return resp.data;
+    });
+  };
   return {
-    getAllDecks: getAllDecks
+    getAllDecks: getAllDecks,
+    getAllDeckCards: getAllDeckCards,
+    postCardToReviews: postCardToReviews,
+    reviewCount: reviewCount,
+    getReviews: getReviews
   };
 })
 
@@ -39,7 +90,7 @@ angular.module('myApp.services', [])
     getAllCards: getAllCards
   };
 })
-.factory('Auth', function ($http, $location, $window) {
+.factory('Auth', function ($http, $location, $window, $rootScope) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
@@ -54,6 +105,7 @@ angular.module('myApp.services', [])
       data: user
     })
     .then(function (resp) {
+      $window.localStorage.setItem('com.sr-flashcards.user_id', resp.data.user_id);
       return resp.data.token;
     });
   };
@@ -65,6 +117,7 @@ angular.module('myApp.services', [])
       data: user
     })
     .then(function (resp) {
+      $window.localStorage.setItem('com.sr-flashcards.user_id', resp.data.user_id);
       return resp.data.token;
     });
   };
@@ -75,6 +128,7 @@ angular.module('myApp.services', [])
 
   var signout = function () {
     $window.localStorage.removeItem('com.sr-flashcards');
+    $window.localStorage.removeItem('com.sr-flashcards.user_id');
     $location.path('/signin');
   };
 

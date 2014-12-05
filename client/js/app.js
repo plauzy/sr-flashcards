@@ -17,6 +17,11 @@ myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpP
       templateUrl: 'views/register.html',
       controller: 'RegistrationController'
     })
+    .when('/decks/:id', {
+      templateUrl: 'views/cardview.html',
+      authenticate: true,
+      controller: 'DecksController'
+    })
     .when('/decks', {
       templateUrl: 'views/decks.html',
       authenticate: true,
@@ -25,7 +30,7 @@ myApp.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpP
     .when('/reviews', {
       templateUrl: 'views/reviews.html',
       authenticate: true,
-      controller: 'ReviewsController'
+      controller: 'DecksController'
     })
     .otherwise({
       redirectTo: '/login'
